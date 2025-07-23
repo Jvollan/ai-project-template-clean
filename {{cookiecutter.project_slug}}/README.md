@@ -80,18 +80,34 @@ python -m alembic upgrade head
 
 ## 🤖 AI-First Development
 
-This project includes:
-- **Recursive CLAUDE.md files** for AI context in every directory
-- **Cursor IDE rules** in `.cursor/rules/` for consistent AI behavior
-- **Pre-commit hooks** for automated code quality
-- **GitHub Actions** for CI/CD
+This project includes pre-configured AI development tools:
+
+- **zen_mcp_server** - Multi-provider AI model coordination
+- **superclaude** - Enhanced Claude Code workflows  
+- **claudia** - Visual AI control center
+- **claude_sessions** - Session management for Claude Code
+- **claude_task_master** - AI-powered task management
+
+### AI Tools Verification
+
+```bash
+# Test all AI components are working
+python -c "
+import zen_mcp_server, superclaude, claudia, claude_sessions, claude_task_master
+print('✅ All AI tools imported successfully')
+"
+
+# Run comprehensive verification
+./scripts/verify-ai-tools.sh  # Should show ALL GREEN
+```
 
 ### Working with Claude/Cursor
 
-1. **Context-aware**: Every directory has a CLAUDE.md file explaining its purpose
-2. **Quality-first**: Pre-commit hooks ensure consistent code style
-3. **Test-driven**: Pytest runs automatically in CI
-4. **MVP-focused**: Prioritizes working code over perfect architecture
+1. **Enhanced Toolchain**: Bootstrap includes ai-toolbox with 5 vendored components
+2. **Context-aware**: Every directory has a CLAUDE.md file explaining its purpose
+3. **Quality-first**: Pre-commit hooks ensure consistent code style
+4. **Test-driven**: Pytest runs automatically in CI
+5. **MVP-focused**: Prioritizes working code over perfect architecture
 
 ## 🛠️ Configuration
 

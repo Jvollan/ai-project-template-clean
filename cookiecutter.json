@@ -4,5 +4,9 @@
   "author_name": "Your Name",
   "author_email": "your.email@example.com",
   "project_description": "A brief description of your project",
-  "python_version": "3.12"
+  "python_version": "3.12",
+  "license": "MIT",
+  "use_database": "no",
+  "use_api": "no",
+  "ai_provider": "claude"
 }

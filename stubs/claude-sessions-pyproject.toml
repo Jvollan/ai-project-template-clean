@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "claude-sessions"
+version = "0.1.0"
+description = "Session management for Claude Code"
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["commands*"]
+
+[project.scripts]
+claude-sessions = "commands.session_manager:main"

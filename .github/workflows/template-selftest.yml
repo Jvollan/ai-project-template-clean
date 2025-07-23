@@ -1,0 +1,30 @@
+name: template-selftest
+on:
+  schedule:
+    # Every Monday at 07:00 UTC - check template still works
+    - cron: '0 7 * * 1'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '{{cookiecutter.python_version}}'
+        cache: 'pip'
+    - run: pip install cookiecutter pre-commit pytest -q
+    - name: Test template generation
+      run: |
+        cd ..
+        cookiecutter ./{{cookiecutter.project_slug}} --no-input project_name=ci_test
+        cd ci_test
+        chmod +x scripts/bootstrap.sh
+        ./scripts/bootstrap.sh
+    - name: Verify template works
+      run: |
+        cd ../ci_test
+        source venv/bin/activate
+        pre-commit run --all-files
+        pytest --version  # Basic smoke test

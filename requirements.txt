@@ -1,0 +1,39 @@
+# {{cookiecutter.project_name}} - MVP Dependencies
+# Keep dependencies minimal for faster iteration
+
+# Core application{% if cookiecutter.use_api == "yes" %}
+fastapi>=0.104.1
+uvicorn[standard]>=0.24.0{% endif %}
+
+# Development tools
+pytest>=7.4.0
+ruff>=0.1.9
+black>=23.12.0
+pre-commit>=3.6.0
+bandit>=1.7.5
+
+# Utilities
+python-dotenv>=1.0.0
+{% if cookiecutter.use_database == "postgresql" %}
+# Database
+psycopg2-binary>=2.9.9
+sqlalchemy>=2.0.23
+alembic>=1.13.1
+{% elif cookiecutter.use_database == "sqlite" %}
+# Database  
+sqlalchemy>=2.0.23
+alembic>=1.13.1
+{% endif %}
+{% if cookiecutter.ai_provider == "claude" or cookiecutter.ai_provider == "multiple" %}
+# AI Integration
+anthropic>=0.8.0
+{% endif %}{% if cookiecutter.ai_provider == "openai" or cookiecutter.ai_provider == "multiple" %}
+openai>=1.6.0
+{% endif %}
+# AI Components Base Dependencies
+# These will be used by the installed AI toolkit
+pydantic>=2.0.0
+httpx>=0.25.0
+requests>=2.31.0
+
+# Add your project dependencies here - keep it minimal for MVP!
